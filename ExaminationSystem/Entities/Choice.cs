@@ -9,5 +9,6 @@
 
         public int QuestionId { get; set; }
         public Question Question { get; set; } = default!;
+        public ICollection<StudentAnswer> StudentAnswers { get; set; } = [];
     }
 }

@@ -1,5 +1,5 @@
 ﻿using ExaminationSystem.Contracts.Questions;
-using SurveyBasket.Abstractions;
+using ExaminationSystem.Abstractions;
 
 namespace ExaminationSystem.Services.Questions
 {
@@ -9,7 +9,7 @@ namespace ExaminationSystem.Services.Questions
 
         Task<Result<QuestionResponse>> GetAsync(int id, CancellationToken cancellationToken = default);
 
-        Task<Result<QuestionResponse>> AddAsync(QuestionRequest request, CancellationToken cancellationToken = default);
+        Task<Result<QuestionResponse>> AddAsync(int quizId,QuestionRequest request, CancellationToken cancellationToken = default);
 
         Task<Result> UpdateAsync(int id, QuestionRequest request, CancellationToken cancellationToken = default);
 

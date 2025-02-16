@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using ExaminationSystem.Persistence;
+using ExaminationSystem.Repositories;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ExaminationSystem.Controllers
@@ -7,5 +9,11 @@ namespace ExaminationSystem.Controllers
     [ApiController]
     public class QuestionsController : ControllerBase
     {
+        CourseRepository _courseRepository;
+
+        public QuestionsController()
+        {
+            _courseRepository = new CourseRepository();
+        }
     }
 }

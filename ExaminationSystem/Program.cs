@@ -18,16 +18,16 @@ namespace ExaminationSystem
             builder.Services.AddOpenApi();
 
             //Add EF
-            var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-                ?? throw new InvalidOperationException("connectionString name DefaultConnection is not found");
+            //var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
+            //    ?? throw new InvalidOperationException("connectionString name DefaultConnection is not found");
 
-            builder.Services.AddDbContext<ApplicationDbContext>(options =>
-            {
-                options.UseSqlServer(connectionString);
-            });
+            //builder.Services.AddDbContext<ApplicationDbContext>(options =>
+            //{
+            //    options.UseSqlServer(connectionString);
+            //});
 
             //register services
-            builder.Services.AddScoped<IQuestionService, QuestionService>();
+            //builder.Services.AddScoped<IQuestionService, QuestionService>();
 
 
             var app = builder.Build();

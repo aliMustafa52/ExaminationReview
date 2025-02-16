@@ -55,12 +55,12 @@ namespace ExaminationSystem.Services.Questions
 
             return Result.Success(questionResponse);
         }
-        public async Task<Result<QuestionResponse>> AddAsync(int courseId,QuestionRequest request, CancellationToken cancellationToken = default)
+        public async Task<Result<QuestionResponse>> AddAsync(int quizId, QuestionRequest request, CancellationToken cancellationToken = default)
         {
             var course = await _dbContext.Courses
                             .Include(c => c.Questions.Where(q => q.IsActive))
                             .ThenInclude(q => q.Choices.Where(c => c.IsActive))
-                            .FirstOrDefaultAsync(c => c.Id == courseId && c.IsActive, cancellationToken);
+                            .FirstOrDefaultAsync(c => c.Id == quizId && c.IsActive, cancellationToken);
 
             if(course is null)
                 return Result.Failure<QuestionResponse>(CourseErrors.CourseNotFound);
@@ -73,7 +73,7 @@ namespace ExaminationSystem.Services.Questions
             var question = new Question
             {
                 Content = request.Content,
-                CourseId = courseId,
+                CourseId = quizId,
                 Choices = request.ChoiceRequests
                             .Select(c => new Choice
                             {

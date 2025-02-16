@@ -1,13 +1,23 @@
-﻿namespace ExaminationSystem.Entities
+﻿using ExaminationSystem.Entities.Enums;
+
+namespace ExaminationSystem.Entities
 {
-    public class Question
+    public class Question : BaseModel
     {
-        public int Id { get; set; }
         public string Content { get; set; } = string.Empty;
-        public bool IsActive { get; set; } = true;
-        public int QuizId { get; set; }
+        public int CourseId { get; set; }
+        public int InstructorId { get; set; }
+        public QuestionLevel Level { get; set; }
+        
 
         public ICollection<Choice> Choices { get; set; } = [];
-        public Quiz Quiz { get; set; } = default!;
+        public Course Course { get; set; } = default!;
+        public Instructor Instructor { get; set; } = default!;
+
+        public ICollection<Exam> Exams { get; set; } = [];
+        public List<ExamQuestion> ExamQuestions { get; set; } = [];
+        public ICollection<StudentAnswer> StudentAnswers { get; set; } = [];
+
+
     }
 }
